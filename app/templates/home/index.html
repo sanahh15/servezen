@@ -1,0 +1,21 @@
+{%- extends "layout/base.html" -%}
+
+{%- block content -%}
+<h2 class="mt-4">Available Services</h2>
+
+<div class="row">
+    {% for service in services %}
+    <div class="col-md-4">
+        <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">{{ service.name }}</h5>
+                <p class="card-text">{{ service.description }}</p>
+                <h6 class="card-subtitle mb-2 text-muted">${{ service.price }}</h6>
+                <a href="/book/{{service.id}}" class="btn btn-primary">Book Now</a>
+                <a href="{{ url_for('booking.book_service', service_id=service.id) }}" class="btn btn-primary">Book Now</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}    
+</div>
+{%- endblock -%}
