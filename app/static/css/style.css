@@ -474,3 +474,18 @@ body {
     background: linear-gradient(90deg, #16325c, #1e3c72);
     color: #fff;
 }
+
+ @media (max-width: 768px) {
+        .hero {
+            height: 200px;
+        }
+
+        .hero h1 {
+            font-size: 18px;
+        }
+
+        .navbar .btn {
+            font-size: 12px;
+            padding: 5px 10px;
+        }
+    }
