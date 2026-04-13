@@ -6,6 +6,7 @@ from .routes.booking import booking_bp
 from .routes.admin import admin_bp
 from config import Config
 
+
 # Import all models so SQLAlchemy can resolve relationship targets.
 from . import models
 

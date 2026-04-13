@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="dashboard-container">
+
+    <!-- 🔹 Header -->
+    <div class="dashboard-header">
+        <h2>Welcome, {{ current_user.name }} 👋</h2>
+        <p>Manage your healthcare services easily</p>
+    </div>
+
+    <!-- 🔹 Top Cards -->
+    <div class="card-container">
+
+        <div class="info-card">
+            <h4>📅 Upcoming</h4>
+            {% if upcoming %}
+                <p>{{ upcoming.service.name }}</p>
+                <small>{{ upcoming.date }}</small>
+            {% else %}
+                <p>No bookings</p>
+            {% endif %}
+        </div>
+
+        <div class="info-card">
+            <h4>📋 Total Bookings</h4>
+            <p>{{ bookings|length }}</p>
+        </div>
+
+        <div class="info-card">
+            <h4>💊 Services</h4>
+            <p>{{ services|length }} Available</p>
+        </div>
+
+    </div>
+
+    <!-- 🔹 Book Button -->
+    <div class="book-btn">
+        <a href="{{ url_for('booking.book') }}">+ Book Appointment</a>
+    </div>
+
+    <!-- 🔹 Services Section -->
+    <div class="services-section">
+        <h3>Available Services</h3>
+
+        {% if services %}
+        <div class="service-cards">
+            {% for service in services %}
+            <div class="service-card">
+                <h4>🩺 {{ service.name }}</h4>
+                <p>₹ {{ service.price }}</p>
+                <a href="{{ url_for('booking.book', service_id=service.id) }}">Book</a>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+            <p>No services available</p>
+        {% endif %}
+    </div>
+
+    <!-- 🔹 Table -->
+    <div class="table-card">
+        <h3>My Appointments</h3>
+
+        <table>
+            <tr>
+                <th>Service</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+
+            {% for booking in bookings %}
+            <tr>
+                <td>{{ booking.service.name }}</td>
+                <td>{{ booking.date }}</td>
+                <td>
+                    {% if booking.status == "Booked" %}
+                        <span class="status booked">Booked</span>
+                    {% elif booking.status == "Completed" %}
+                        <span class="status completed">Completed</span>
+                    {% else %}
+                        <span class="status cancelled">Cancelled</span>
+                    {% endif %}
+                </td>
+                <td>
+        {% if booking.status == "Booked" %}
+            <a href="{{ url_for('booking.cancel', id=booking.id) }}" 
+               class="cancel-btn">Cancel</a>
+        {% else %}
+            -
+        {% endif %}
+    </td>
+            </tr>
+            {% endfor %}
+
+        </table>
+    </div>
+
+</div>
+
+{% endblock %}

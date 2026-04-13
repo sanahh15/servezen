@@ -6,4 +6,4 @@ class Service(db.Model):
     description = db.Column(db.Text)
     price =  db.Column(db.Integer)
 
-    bookings = db.relationship('Booking', backref='service', lazy=True) 
+    

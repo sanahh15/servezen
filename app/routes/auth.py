@@ -42,10 +42,9 @@ def login():
       
       #role-based redirection
             if user.role == "admin":
-                return redirect('/admin-dashboard')
+             return redirect(url_for('admin.dashboard'))
             else:
-                return redirect('/')    
-            
+             return redirect(url_for('home.dashboard'))
         
     return render_template('auth/login.html')
 

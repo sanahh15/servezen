@@ -1,0 +1,423 @@
+body{
+    font-family: 'Arial', sans-serif;
+    background-color: #be0303;
+    margin: 0;
+    padding: 0;
+}
+services-card {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+}
+.service {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin: 15px;
+    width: 300px;
+    text-align: center;
+    padding: 20px;
+}
+.service img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px 8px 0 0;
+}
+.service-card:hover {
+    margin: 15px 0;
+}
+h2 {
+    color: #333;
+}
+.mb-4 {
+    margin-bottom: 1.5rem;
+}
+body {
+    background: #f5f7fb;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.dashboard-container {
+    width: 90%;
+    margin: auto;
+    padding: 20px;
+}
+
+/* Header */
+.dashboard-header h2 {
+    font-size: 28px;
+    margin-bottom: 5px;
+}
+
+.dashboard-header p {
+    color: gray;
+}
+
+/* Cards */
+.card-container {
+    display: flex;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.info-card {
+    flex: 1;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    text-align: center;
+}
+
+.info-card h4 {
+    margin-bottom: 10px;
+}
+
+/* Button */
+.book-btn a {
+    display: inline-block;
+    background: #2563eb;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    margin-bottom: 20px;
+}
+
+.book-btn a:hover {
+    background: #1e40af;
+}
+
+/* Table */
+.table-card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+table th {
+    text-align: left;
+    padding: 10px;
+    background: #f1f5f9;
+}
+
+table td {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+/* Status Colors */
+.status {
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+}
+
+.booked {
+    background: #facc15;
+    color: black;
+}
+
+.completed {
+    background: #22c55e;
+    color: white;
+}
+
+.cancelled {
+    background: #ef4444;
+    color: white;
+}
+.form-container {
+    width: 400px;
+    margin: 50px auto;
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.form-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-container label {
+    display: block;
+    margin-top: 10px;
+}
+
+.form-container select,
+.form-container input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.form-container button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px;
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 8px;
+}
+
+.form-container button:hover {
+    background: #1e40af;
+}
+.services-section {
+    margin-top: 30px;
+}
+
+.service-cards {
+    display: flex;
+    gap: 20px;
+}
+
+.service-card {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    width: 200px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.service-card a {
+    display: inline-block;
+    margin-top: 10px;
+    background: #2563eb;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+/* Booking Page */
+.booking-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+.booking-card {
+    width: 400px;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.booking-card h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.booking-card label {
+    display: block;
+    margin-top: 10px;
+    font-weight: 500;
+}
+
+.booking-card select,
+.booking-card input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.booking-card button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px;
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.booking-card button:hover {
+    background: #1e40af;
+}
+.cancel-btn {
+    background: red;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+.cancel-btn:hover {
+    background: darkred;
+}
+.complete-btn {
+    background: green;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.complete-btn:hover {
+    background: darkgreen;
+}
+
+.dashboard-container {
+    padding: 20px;
+}
+
+.card-container {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.info-card {
+    flex: 1;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 2px 10px rgba(0,0,0,0.1);
+}
+
+.table-card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.complete-btn {
+    background: green;
+    color: white;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.cancel-btn {
+    background: red;
+    color: white;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.status.booked {
+    background: orange;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.status.completed {
+    background: green;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.status.cancelled {
+    background: red;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+.dashboard-container {
+    padding: 20px;
+}
+
+.card-container {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.info-card {
+    flex: 1;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 2px 10px rgba(0,0,0,0.1);
+}
+
+.table-card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.complete-btn {
+    background: green;
+    color: white;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.cancel-btn {
+    background: red;
+    color: white;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.status.booked {
+    background: orange;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.status.completed {
+    background: green;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.status.cancelled {
+    background: red;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+}

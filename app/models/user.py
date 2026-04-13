@@ -9,7 +9,7 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(255))
     role = db.Column(db.String(20), default="user")
 
-    bookings = db.relationship("Booking", backref="user")
+
 
     def set_password(self, password):
         self.password = generate_password_hash(password)

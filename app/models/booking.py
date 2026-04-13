@@ -7,3 +7,9 @@ class Booking(db.Model):
 
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     service_id = db.Column(db.Integer, db.ForeignKey('service.id'))
+
+
+    
+    # ✅ ADD THESE
+    user = db.relationship('User')
+    service = db.relationship('Service')
