@@ -42,9 +42,9 @@ def add_services():
     from app.models.service import Service
     from app.extensions import db
 
-    s1 = Service(name="Doctor Consultation", price=500)
-    s2 = Service(name="Lab Test", price=300)
-    s3 = Service(name="Medicine Delivery", price=200)
+    s1 = Service(name="Doctor Consultation", description="Online doctor appointment", price=500)
+    s2 = Service(name="Lab Test", description="Blood test at home", price=300)
+    s3 = Service(name="Medicine Delivery", description="Doorstep medicines", price=200)
 
     db.session.add_all([s1, s2, s3])
     db.session.commit()
@@ -59,9 +59,13 @@ def make_admin():
     user = User.query.filter_by(email='sahanar20657@gmail.com').first()
 
     if not user:
-        return "User not found ❌"
+        return "<h3 style='color:red'>User not found ❌</h3>"
 
     user.role = "admin"
     db.session.commit()
 
-    return f"{user.email} is now ADMIN ✅"
+    return f"""
+    <h2 style='color:green'>
+        {user.email} is now ADMIN ✅
+    </h2>
+    """

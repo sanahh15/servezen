@@ -325,7 +325,7 @@ th, td {
 
 .cancel-btn {
     background: red;
-    color: white;
+    color: rgb(13, 6, 6);
     padding: 5px 10px;
     text-decoration: none;
     border-radius: 5px;
@@ -396,7 +396,7 @@ th, td {
 
 .cancel-btn {
     background: red;
-    color: white;
+    color: rgb(6, 2, 2);
     padding: 5px 10px;
     text-decoration: none;
     border-radius: 5px;
@@ -417,7 +417,60 @@ th, td {
 
 .status.cancelled {
     background: red;
-    color: white;
+    color: rgb(18, 4, 4);
     padding: 5px 10px;
     border-radius: 5px;
+}
+body {
+    background-color: #031b3a;
+}
+
+/* Card design */
+.service-card {
+    border-radius: 30px;
+    overflow: hidden;
+    transition: 0.3s ease-in-out;
+    background: white;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+/* Top colored bar */
+.service-header {
+    height: 8px;
+    background: linear-gradient(90deg, #1e3c72, #2a5298);
+}
+
+/* Title */
+.card-title {
+    font-size: 20px;
+}
+
+/* Price badge */
+.price-badge {
+    display: inline-block;
+    padding: 6px 15px;
+    background: #e8f0ff;
+    color: #1e3c72;
+    font-weight: bold;
+    border-radius: 20px;
+}
+
+/* Button */
+.btn-book {
+    background: linear-gradient(90deg, #1e3c72, #2a5298);
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.btn-book:hover {
+    background: linear-gradient(90deg, #16325c, #1e3c72);
+    color: #fff;
 }

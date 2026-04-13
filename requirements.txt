@@ -114,3 +114,4 @@ websocket-client==1.9.0
 Werkzeug==3.1.6
 WTForms==3.2.1
 pywinpty==3.0.3
+psycopg2-binary

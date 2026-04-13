@@ -26,7 +26,6 @@ def dashboard():
         services=services
     )
 
-
 # 🔄 Update Booking Status
 @admin_bp.route('/update/<int:id>/<status>')
 @login_required

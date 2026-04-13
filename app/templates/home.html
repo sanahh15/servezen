@@ -7,6 +7,7 @@
 
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
     <style>
         body {
@@ -96,21 +97,45 @@
 
 <!-- Services Section -->
 <div class="container mt-5">
-    <h2 class="text-center mb-4">✨ Available Services</h2>
 
-    <div class="row">
+    <h2 class="text-center mb-5 fw-bold text-primary">
+        🏥 Available Services
+    </h2>
+
+    <div class="row g-4">
+
         {% for service in services %}
-        <div class="col-md-4 mb-4">
-            <div class="card service-card shadow-sm">
-                <div class="card-body text-center">
-                    <h5 class="card-title">{{ service[1] }}</h5>
-                    <p class="card-text">{{ service[2] }}</p>
-                    <h6>₹ {{ service[3] }}</h6>
-                    <a href="#" class="btn btn-primary w-100 mt-2">Book Appointment</a>
+        <div class="col-md-4">
+
+            <div class="card service-card h-100 border-0 shadow-lg">
+
+                <!-- Header Color Strip -->
+                <div class="service-header"></div>
+
+                <div class="card-body text-center p-4">
+
+                    <h5 class="card-title fw-bold text-dark">
+                        {{ service[1] }}
+                    </h5>
+
+                    <p class="text-muted">
+                        {{ service[2] }}
+                    </p>
+
+                    <div class="price-badge mb-3">
+                        ₹ {{ service[3] }}
+                    </div>
+
+                    <a href="#" class="btn btn-book w-100">
+                        Book Appointment
+                    </a>
+
                 </div>
             </div>
+
         </div>
         {% endfor %}
+
     </div>
 </div>
 

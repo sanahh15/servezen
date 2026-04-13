@@ -1,139 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Login - Servezen</title>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login - Servezen</title>
 
-<!-- Bootstrap (fixed link) -->
+<!-- Bootstrap -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+<!-- Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-/* Background */
+<!-- Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
 body {
+    margin: 0;
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
-                url('/static/images/serve.jpeg') no-repeat center center fixed;
-    background-size: cover;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)),
+    url('/static/images/serve.jpeg') no-repeat center center/cover;
 }
 
-/* Glass Card */
-.login-box {
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-radius: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    padding: 35px 30px;
-    width: 380px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
-    text-align: center;
-    transition: 0.3s;
-}
-
-.login-box:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
-}
-
-/* Title */
-.login-box h2 {
-    margin-bottom: 20px;
-    font-weight: 600;
-    color: #fff;
-}
-
-/* Inputs */
-input {
+/* WRAPPER */
+.wrapper {
     width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    border: none;
-    border-radius: 8px;
-    font-size: 14px;
-    outline: none;
+    max-width: 420px;
+    padding: 20px;
 }
 
-input:focus {
-    box-shadow: 0 0 8px rgba(71, 103, 245, 0.7);
-}
-
-/* Button */
-button {
-    width: 100%;
-    padding: 12px;
-    margin-top: 10px;
-    background: linear-gradient(135deg, #2a5298, #1e3c72);
+/* GLASS CARD */
+.login-card {
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-radius: 18px;
+    border: 1px solid rgba(255,255,255,0.25);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+    padding: 35px;
     color: white;
+    animation: fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+/* TITLE */
+.login-card h2 {
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.subtitle {
+    text-align: center;
+    font-size: 14px;
+    color: #d1d5db;
+    margin-bottom: 25px;
+}
+
+/* INPUT */
+.form-label {
+    font-size: 13px;
+    color: #e5e7eb;
+}
+
+.input-group-text {
+    background: rgba(255,255,255,0.15);
     border: none;
-    border-radius: 8px;
+    color: white;
+}
+
+.form-control {
+    background: rgba(255,255,255,0.15);
+    border: none;
+    color: white;
+    border-radius: 10px;
+}
+
+.form-control::placeholder {
+    color: #d1d5db;
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border: 1px solid #60a5fa;
+    background: rgba(255,255,255,0.2);
+}
+
+/* BUTTON */
+.btn-custom {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    border: none;
+    border-radius: 10px;
+    padding: 12px;
     font-weight: 600;
-    font-size: 16px;
     transition: 0.3s;
 }
 
-button:hover {
-    background: linear-gradient(135deg, #4CAF50, #2ecc71);
-    transform: translateY(-2px);
+.btn-custom:hover {
+    transform: scale(1.03);
+    box-shadow: 0 5px 15px rgba(37,99,235,0.4);
 }
 
-/* Flash messages */
-.flash-messages {
-    color: #ffdddd;
+/* FLASH */
+.flash {
+    color: #fca5a5;
     font-size: 13px;
+    text-align: center;
     margin-bottom: 10px;
 }
 
-/* Links */
-p {
-    margin-top: 15px;
-    color: #fff;
+/* FOOTER */
+.bottom-text {
+    text-align: center;
+    margin-top: 18px;
+    font-size: 14px;
+    color: #e5e7eb;
 }
 
-a {
-    color: #ffd700;
+.bottom-text a {
+    color: #60a5fa;
     text-decoration: none;
-    font-weight: 500;
 }
 
-a:hover {
+.bottom-text a:hover {
     text-decoration: underline;
 }
-</style>
 
+</style>
 </head>
 
 <body>
 
-<div class="login-box">
+<div class="wrapper">
 
-    <h2>🔐 Sign In</h2>
+    <div class="login-card">
 
-    {% with messages = get_flashed_messages() %}
-      {% if messages %}
-        <div class="flash-messages">
-          {% for msg in messages %}
-            {{ msg }}<br>
-          {% endfor %}
+        <h2>🔐 Sign In</h2>
+        <div class="subtitle">Login to your Servezen account</div>
+
+        <!-- FLASH -->
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <div class="flash">
+              {% for msg in messages %}
+                {{ msg }}<br>
+              {% endfor %}
+            </div>
+          {% endif %}
+        {% endwith %}
+
+        <form method="POST" action="{{ url_for('auth.login') }}">
+
+            <!-- Email -->
+            <div class="mb-3">
+                <label class="form-label">Email</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                    <input type="email" class="form-control" name="email" placeholder="Enter email" required>
+                </div>
+            </div>
+
+            <!-- Password -->
+            <div class="mb-3">
+                <label class="form-label">Password</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                    <input type="password" class="form-control" name="password" placeholder="Enter password" required>
+                </div>
+            </div>
+
+            <!-- BUTTON -->
+            <button type="submit" class="btn btn-custom w-100">
+                Login
+            </button>
+
+        </form>
+
+        <div class="bottom-text">
+            Don't have an account?
+            <a href="{{ url_for('auth.register') }}">Create account</a>
         </div>
-      {% endif %}
-    {% endwith %}
 
-    <form method="POST" action="{{ url_for('auth.login') }}">
-        <input type="email" name="email" placeholder="Enter Email" required>
-        <input type="password" name="password" placeholder="Enter Password" required>
-        <button type="submit">Login</button>
-    </form>
-
-    <!-- ✅ FIXED REGISTER LINK -->
-    <p>Don't have an account? 
-        <a href="{{ url_for('auth.register') }}">Register here</a>
-    </p>
+    </div>
 
 </div>
 
