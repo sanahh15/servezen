@@ -1,7 +1,7 @@
-# class Config:
-#     SECRET_KEY = "servezen_secret"
-#     SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:@localhost:3306/servezen"
-#     SQLALCHEMY_TRACK_MODIFICATIONS = False
+#class Config:
+ #    SECRET_KEY = "servezen_secret"
+  #   SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:@localhost:3306/servezen"
+#SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 #import os
 
@@ -23,3 +23,4 @@ class Config:
 
     SQLALCHEMY_DATABASE_URI = db_url
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+     

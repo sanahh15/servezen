@@ -44,35 +44,87 @@
         }
 
         /* Services */
-        .service-card {
-            border: none;
-            border-radius: 15px;
-            transition: 0.3s;
-        }
-
-        .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0px 10px 25px rgba(0,0,0,0.1);
-        }
-
-        .card-title {
-            font-weight: bold;
-            color: #2a5298;
-        }
-
-        .btn-primary {
-            background-color: #2a5298;
-            border: none;
-        }
-
-        .btn-primary:hover {
-            background-color: #1e3c72;
-        }
-        @media (max-width: 768px) {
-   .cards {
-      flex-direction: column;
-   }
+        .section-title {
+    font-weight: 700;
+    font-size: 32px;
+    color: #2c5364;
+    position: relative;
+    display: inline-block;
 }
+
+/* Underline effect */
+.section-title::after {
+    content: "";
+    width: 60%;
+    height: 4px;
+    background: linear-gradient(90deg, #3a7bd5, #00d2ff);
+    position: absolute;
+    left: 20%;
+    bottom: -10px;
+    border-radius: 10px;
+}
+
+.service-row {
+    padding: 18px 20px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    background: white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    transition: 0.3s ease;
+    border-left: 5px solid transparent;
+}
+
+.service-row:hover {
+    transform: translateY(-3px);
+    border-left: 5px solid #3a7bd5;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+}
+
+/* ICON */
+.icon-box {
+    background: linear-gradient(135deg, #3a7bd5, #00d2ff);
+    color: white;
+    padding: 14px;
+    border-radius: 12px;
+    font-size: 18px;
+}
+
+/* PRICE */
+.price {
+    font-weight: bold;
+    font-size: 18px;
+    color: #2c5364;
+}
+
+/* BUTTON */
+.btn-book {
+    background: linear-gradient(45deg, #3a7bd5, #00d2ff);
+    color: white;
+    border-radius: 8px;
+    padding: 6px 16px;
+    transition: 0.3s;
+}
+
+.btn-book:hover {
+    transform: scale(1.05);
+    color: white;
+}
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(90deg, #1e3c72, #2a5298);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 26px;
+            }
+        }
+
     </style>
 </head>
 
@@ -94,50 +146,46 @@
 <!-- Hero Section -->
 <div class="hero">
     <h1><i>🏥 Book Your Doctor Appointment Easily</i></h1>
+    <p><i>Fast, Secure & Reliable Healthcare Booking Platform</i></p>
 </div>
 
 <!-- Services Section -->
-<div class="container mt-5">
+<h2 class="text-center mb-5 section-title"><i>
+    🏥 Our Medical Services</i>
+</h2>
 
-    <h2 class="text-center mb-5 fw-bold text-primary">
-        🏥 Available Services
-    </h2>
+    {% for service in services %}
+    <div class="service-row d-flex justify-content-between align-items-center">
 
-    <div class="row g-4">
+        <!-- LEFT -->
+        <div class="d-flex align-items-center gap-3">
 
-        {% for service in services %}
-        <div class="col-md-4">
+            <div class="icon-box">
+                <i class="fas fa-user-md"></i>
+            </div>
 
-            <div class="card service-card h-100 border-0 shadow-lg">
-
-                <!-- Header Color Strip -->
-                <div class="service-header"></div>
-
-                <div class="card-body text-center p-4">
-
-                    <h5 class="card-title fw-bold text-dark">
-                        {{ service[1] }}
-                    </h5>
-
-                    <p class="text-muted">
-                        {{ service[2] }}
-                    </p>
-
-                    <div class="price-badge mb-3">
-                        ₹ {{ service[3] }}
-                    </div>
-
-                    <a href="#" class="btn btn-book w-100">
-                        Book Appointment
-                    </a>
-
-                </div>
+            <div>
+                <h5 class="mb-1">{{ service[1] }}</h5>
+                <p class="text-muted mb-0">{{ service[2] }}</p>
             </div>
 
         </div>
-        {% endfor %}
+
+        <!-- RIGHT -->
+        <div class="d-flex align-items-center gap-3">
+            <span class="price">₹ {{ service[3] }}</span>
+            <a href="#" class="btn btn-book">Book</a>
+        </div>
 
     </div>
+    {% endfor %}
+</div>
+</div>
+    <!-- Footer -->
+<div class="footer">
+    <p>© 2026 ServeZen | Hospital Booking System</p>
+</div>
+
 </div>
 
 </body>
