@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta viewport="width=device-width, initial-scale=1.0">
     <title>Servezen - Hospital Booking</title>
 
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <style>
         body {
@@ -30,136 +31,158 @@
         .hero {
             background: url('https://images.unsplash.com/photo-1586773860418-d37222d8fce3') no-repeat center center/cover;
             height: 350px;
-            color: white;
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
+            color: white;
         }
 
-        .hero h1 {
+        /* Overlay */
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
             background: rgba(0,0,0,0.5);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
             padding: 15px 25px;
             border-radius: 10px;
         }
 
-        /* Services */
+        /* Section Title */
         .section-title {
-    font-weight: 700;
-    font-size: 32px;
-    color: #2c5364;
-    position: relative;
-    display: inline-block;
-}
+            font-weight: 700;
+            font-size: 32px;
+            color: #2c5364;
+            position: relative;
+            display: inline-block;
+        }
 
-/* Underline effect */
-.section-title::after {
-    content: "";
-    width: 60%;
-    height: 4px;
-    background: linear-gradient(90deg, #3a7bd5, #00d2ff);
-    position: absolute;
-    left: 20%;
-    bottom: -10px;
-    border-radius: 10px;
-}
+        .section-title::after {
+            content: "";
+            width: 60%;
+            height: 4px;
+            background: linear-gradient(90deg, #3a7bd5, #00d2ff);
+            position: absolute;
+            left: 20%;
+            bottom: -10px;
+            border-radius: 10px;
+        }
 
-.service-row {
-    padding: 18px 20px;
-    border-radius: 12px;
-    margin-bottom: 15px;
-    background: white;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-    transition: 0.3s ease;
-    border-left: 5px solid transparent;
-}
+        /* Service Row */
+        .service-row {
+            padding: 18px 20px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            transition: 0.3s ease;
+            border-left: 5px solid transparent;
 
-.service-row:hover {
-    transform: translateY(-3px);
-    border-left: 5px solid #3a7bd5;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.12);
-}
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
 
-/* ICON */
-.icon-box {
-    background: linear-gradient(135deg, #3a7bd5, #00d2ff);
-    color: white;
-    padding: 14px;
-    border-radius: 12px;
-    font-size: 18px;
-}
+        .service-row:hover {
+            transform: translateY(-3px);
+            border-left: 5px solid #3a7bd5;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+        }
 
-/* PRICE */
-.price {
-    font-weight: bold;
-    font-size: 18px;
-    color: #2c5364;
-}
+        /* Icon */
+        .icon-box {
+            background: linear-gradient(135deg, #3a7bd5, #00d2ff);
+            color: white;
+            padding: 14px;
+            border-radius: 12px;
+            font-size: 18px;
+        }
 
-/* BUTTON */
-.btn-book {
-    background: linear-gradient(45deg, #3a7bd5, #00d2ff);
-    color: white;
-    border-radius: 8px;
-    padding: 6px 16px;
-    transition: 0.3s;
-}
+        /* Price */
+        .price {
+            font-weight: bold;
+            font-size: 18px;
+            color: #2c5364;
+        }
 
-.btn-book:hover {
-    transform: scale(1.05);
-    color: white;
-}
+        /* Button */
+        .btn-book {
+            background: linear-gradient(45deg, #3a7bd5, #00d2ff);
+            color: white;
+            border-radius: 8px;
+            padding: 6px 16px;
+            transition: 0.3s;
+        }
+
+        .btn-book:hover {
+            transform: scale(1.05);
+            color: white;
+        }
 
         /* Footer */
         .footer {
             background: linear-gradient(90deg, #1e3c72, #2a5298);
             color: white;
-            padding: 20px;
+            padding: 15px;
             text-align: center;
             margin-top: 50px;
         }
 
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 26px;
+            .hero {
+                height: 250px;
+            }
+
+            .hero-content h1 {
+                font-size: 22px;
             }
         }
-
     </style>
 </head>
 
 <body>
 
 <!-- Navbar -->
- <header>
-<nav class="navbar navbar-expand-lg">
-    <div class="container">
-        <a class="navbar-brand" href="#"><h1><i>ServeZen</i></h1></a>
+<nav class="navbar navbar-expand-lg py-3">
+    <div class="container d-flex justify-content-between align-items-center">
+        <a class="navbar-brand fs-3" href="#"><h1><i>ServeZen</i></h1></a>
         <div>
             <a href="/login" class="btn btn-outline-light me-2">Login</a>
             <a href="/register" class="btn btn-light">Register</a>
         </div>
     </div>
 </nav>
-</header>   
 
-<!-- Hero Section -->
+<!-- Hero -->
 <div class="hero">
-    <h1><i>🏥 Book Your Doctor Appointment Easily</i></h1>
-    <p><i>Fast, Secure & Reliable Healthcare Booking Platform</i></p>
+    <div class="hero-content">
+        <h1><i>🏥 Book Your Doctor Appointment Easily</i></h1>
+        <p><sup>Fast, Secure & Reliable Healthcare Booking Platform</sup></p>
+    </div>
 </div>
 
-<!-- Services Section -->
-<h2 class="text-center mb-5 section-title"><i>
-    🏥 Our Medical Services</i>
-</h2>
+<!-- Services -->
+<div class="container mt-5">
+
+    <h2 class="text-center mb-5 section-title"><i>
+        🏥 Our Medical Services</i>
+    </h2>
 
     {% for service in services %}
-    <div class="service-row d-flex justify-content-between align-items-center">
+    <div class="service-row">
 
         <!-- LEFT -->
         <div class="d-flex align-items-center gap-3">
-
             <div class="icon-box">
                 <i class="fas fa-user-md"></i>
             </div>
@@ -168,25 +191,81 @@
                 <h5 class="mb-1">{{ service[1] }}</h5>
                 <p class="text-muted mb-0">{{ service[2] }}</p>
             </div>
-
         </div>
 
         <!-- RIGHT -->
-        <div class="d-flex align-items-center gap-3">
+        <div class="d-flex align-items-center gap-3 mt-2">
             <span class="price">₹ {{ service[3] }}</span>
             <a href="#" class="btn btn-book">Book</a>
         </div>
 
     </div>
     {% endfor %}
+    <!-- About Section -->
+<div class="container mt-5">
+
+    <h2 class="text-center mb-4 section-title"><i>
+        About ServeZen</i>
+    </h2>
+
+    <div class="row g-4">
+
+        <!-- About Text -->
+        <div class="col-md-6">
+            <div class="about-box">
+                <h5>Who We Are</h5>
+                <p>
+                    ServeZen is a smart hospital booking platform designed to
+                    make doctor appointments simple, fast, and reliable.
+                </p>
+                <p>
+                    We connect patients with trusted doctors and provide an
+                    easy way to manage healthcare services online.
+                </p>
+            </div>
+        </div>
+
+        <!-- Features -->
+        <div class="col-md-6">
+            <div class="row g-3">
+
+                <div class="col-4">
+                    <div class="feature-box text-center">
+                        <i class="fas fa-clock"></i>
+                        <p>Fast Booking</p>
+                    </div>
+                </div>
+
+                <div class="col-4">
+                    <div class="feature-box text-center">
+                        <i class="fas fa-shield-alt"></i>
+                        <p>Secure</p>
+                    </div>
+                </div>
+
+                <div class="col-4">
+                    <div class="feature-box text-center">
+                        <i class="fas fa-user-md"></i>
+                        <p>Expert Doctors</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
 </div>
+
 </div>
-    <!-- Footer -->
+
+<!-- Footer -->
 <div class="footer">
     <p>© 2026 ServeZen | Hospital Booking System</p>
 </div>
 
-</div>
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

@@ -489,3 +489,92 @@ body {
             padding: 5px 10px;
         }
     }
+    /* Background */
+body {
+    background: linear-gradient(135deg, #dbeafe, #e0e7ff);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Center container */
+.auth-container {
+    width: 100%;
+    max-width: 400px;
+}
+
+/* Glass Card */
+.auth-card {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+/* Inputs */
+.form-control {
+    border-radius: 10px;
+    border: none;
+    padding: 12px;
+}
+
+/* Input icon */
+.input-group-text {
+    background: transparent;
+    border: none;
+}
+
+/* Button */
+.btn-primary {
+    background: linear-gradient(135deg, #2563eb, #1e3a8a);
+    border: none;
+    border-radius: 12px;
+    padding: 12px;
+    font-weight: 600;
+    color: #fff;
+}
+
+/* Links */
+a {
+    color: #2563eb;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+/* About Section */
+.about-box {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+.about-box h5 {
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+/* Feature Box */
+.feature-box {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    transition: 0.3s;
+}
+
+.feature-box i {
+    font-size: 20px;
+    color: #3a7bd5;
+    margin-bottom: 5px;
+}
+
+.feature-box:hover {
+    transform: translateY(-3px);
+}

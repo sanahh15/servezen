@@ -9,7 +9,8 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(255))
     role = db.Column(db.String(20), default="user")
 
-
+    otp = db.Column(db.String(6))
+    otp_expiry = db.Column(db.DateTime)
 
     def set_password(self, password):
         self.password = generate_password_hash(password)

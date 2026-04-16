@@ -4,7 +4,13 @@ from app.models.user import User
 from app.extensions import db
 from werkzeug.security import check_password_hash
 auth_bp = Blueprint('auth', __name__,)
+import random
+from datetime import datetime, timedelta
+from app.extensions import mail  
 
+
+def generate_otp():
+    return str(random.randint(100000, 999999))
 # 🔹 REGISTER
 @auth_bp.route('/register', methods=['GET', 'POST'])
 def register():
@@ -72,6 +78,70 @@ def login():
 
     return render_template('auth/login.html')
 
+@auth_bp.route('/forgot-password', methods=['GET', 'POST'])
+def forgot_password():
+    if request.method == 'POST':
+        email = request.form.get('email')
+        user = User.query.filter_by(email=email).first()
+
+        if user:
+            otp = generate_otp()
+            user.otp = otp
+            user.otp_expiry = datetime.utcnow() + timedelta(minutes=5)
+            db.session.commit()
+
+            from flask_mail import Message
+            msg = Message(
+    "OTP for Password Reset",
+    sender="sahanar2065@gmail.com",   # ✅ ADD THIS LINE
+    recipients=[email]
+)
+            msg.body = f"Your OTP is {otp}"
+
+            mail.send(msg)
+
+            return redirect(url_for('auth.verify_otp', email=email))
+
+        flash("Email not found", "danger")
+
+    return render_template('auth/forgot.html')
+
+
+@auth_bp.route('/verify-otp/<email>', methods=['GET', 'POST'])
+def verify_otp(email):
+    user = User.query.filter_by(email=email).first()
+
+    if request.method == 'POST':
+        entered_otp = request.form.get('otp')
+
+        if user and user.otp == entered_otp:
+            if datetime.utcnow() > user.otp_expiry:
+                flash("OTP expired", "danger")
+            else:
+                return redirect(url_for('auth.reset_password', email=email))
+        else:
+            flash("Invalid OTP", "danger")
+
+    return render_template('auth/verify_otp.html')
+
+
+@auth_bp.route('/reset-password/<email>', methods=['GET', 'POST'])
+def reset_password(email):
+    user = User.query.filter_by(email=email).first()
+
+    if request.method == 'POST':
+        password = request.form.get('password')
+
+        user.set_password(password)
+        user.otp = None
+        user.otp_expiry = None
+
+        db.session.commit()
+
+        flash("Password updated successfully", "success")
+        return redirect(url_for('auth.login'))
+
+    return render_template('auth/reset_password.html')
 
 # 🔹 LOGOUT
 @auth_bp.route('/logout')
